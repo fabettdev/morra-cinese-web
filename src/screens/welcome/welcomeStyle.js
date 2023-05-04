@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const welcomeStyle = StyleSheet.create({
     wrapper: {
+        maxWidth: "100%",
         padding: 30,
-        backgroundColor: "#36397750",
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 5,
@@ -22,7 +22,7 @@ export const welcomeStyle = StyleSheet.create({
     },
     challenger: {
         position: "absolute",
-        left: "10%",
+        left: 0,
         top: "50%",
         width: 150,
         height: 150
