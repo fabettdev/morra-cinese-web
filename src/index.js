@@ -9,12 +9,11 @@ import { BrowserRouter } from "react-router-dom";
 import { SpaceBackground } from "morra-cinese-components";
 
 const root = createRoot(document.getElementById("root"));
+var spaceImage = require("./assets/images/welcome/background.png");
 
 root.render(
   <BrowserRouter>
-    <SpaceBackground
-      bgImage={require("./assets/images/welcome/background.png")}
-    >
+    <SpaceBackground bgImage={spaceImage}>
       <Routing />
     </SpaceBackground>
   </BrowserRouter>
