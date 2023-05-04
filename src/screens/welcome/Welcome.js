@@ -1,15 +1,11 @@
+import { Image, View, Text, useWindowDimensions } from "react-native";
 // Router
 import { useNavigate } from "react-router-dom";
-
 // Native
-import { Image, View, Text, useWindowDimensions, TouchableOpacity, Platform, StyleSheet, TextInput, Dimensions } from "react-native";
-
 // Custom library imports
 import { TextTitle, Form, LeaderboardButton } from "morra-cinese-components";
-
 // Style
 import { welcomeStyle } from "./welcomeStyle";
-
 // Images
 var logo = require("../../assets/images/logo/logo.png");
 var orangeChallenger = require("../../assets/images/welcome/challenger.png");
@@ -20,43 +16,13 @@ function Welcome() {
     const { width } = useWindowDimensions();
 
     function goToGame(name) {
+        if (name.trim() === "") return;
         navigate("/game", {
             state: {
-                name,
+                name: name.trim(),
             },
         });
     }
-
-    function LeaderboardButton(props) {
-        return (
-            <View style={leaderboardButtonStyle.wrapper}>
-                <Image
-                    source={props.image}
-                    resizeMode="contain"
-                    style={leaderboardButtonStyle.image}
-                />
-                <TouchableOpacity>
-                    <TextTitle title="Leaderboard" size={Platform.OS === "web" ? (width > 768 ? 40 : 20) : 20} />
-                </TouchableOpacity>
-            </View>
-        );
-    }
-
-    const leaderboardButtonStyle = StyleSheet.create({
-        wrapper: {
-            position: Platform.OS === "web" ? "fixed" : "absolute",
-            top: Platform.OS === "web" ? (width > 768 ? 20 : 10) : Dimensions.get("window").height - 70,
-            right: Platform.OS === "web" ? (width > 768 ? 50 : 10) : 20,
-            flexDirection: "row",
-            alignItems: "center",
-        },
-        image: {
-            width: Platform.OS === "web" ? (width > 768 ? 120 : 50) : 60,
-            height: Platform.OS === "web" ? (width > 768 ? 120 : 50) : 60,
-        },
-    });
-
-
 
     return (
         <View style={welcomeStyle.wrapper}>
